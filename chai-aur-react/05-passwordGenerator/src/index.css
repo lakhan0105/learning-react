@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: capitalize;
+}
+
+/* container */
+.container {
+  width: 500px;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 5em;
+  background-color: #a9a5a5;
+  color: #000;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+h2 {
+  margin-bottom: 0.5em;
+}
+
+.password-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+/* txt input */
+.txt-input {
+  font-size: 1rem;
+  padding: 0.3em 0.5em;
+  border-radius: 0.2em;
+  width: 80%;
+  outline: none;
+  border: none;
+}
+
+.copy-btn {
+  height: 100%;
+  font-size: 1rem;
+  padding: 0.3em 0.8em;
+  border-radius: 0.2em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #0070e8;
+  color: #fff;
+}
+
+.copy-btn:hover {
+  background-color: #035ab7;
+}
+
+/* other inputs */
+.other-inputs {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.other-inputs div {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  margin-right: 0.5em;
+}
