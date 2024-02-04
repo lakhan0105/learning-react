@@ -1,0 +1,121 @@
+/* IMPORT FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  transition: 0.15s;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  background-color: salmon;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+}
+
+/* NAV CONTAINER STYLING */
+nav {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+  position: relative;
+  padding: 1em;
+}
+
+/* hamburger styling */
+.hamburger {
+  position: absolute;
+  top: 0.85em;
+  right: 0.5em;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* pagelinkscontainer */
+.page-links-container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.page-link {
+  margin-top: 1em;
+}
+
+.page-link-item {
+  margin-bottom: 0.6em;
+}
+
+.page-link-item a {
+  display: block;
+}
+
+.page-link a:hover {
+  color: royalblue;
+}
+
+/* sociallinkcontainer */
+.social-links-container {
+  display: none;
+}
+
+/* CLASSES */
+
+/* MEDIA QUERIES */
+@media only screen and (min-width: 800px) {
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .page-links-container {
+    height: auto !important;
+    display: flex;
+    align-items: center;
+  }
+
+  .page-link {
+    display: flex;
+    /* flex-direction: row; */
+    /* align-items: center; */
+    /* justify-content: center; */
+  }
+
+  .page-link-item {
+    margin-left: 1em;
+  }
+
+  .social-links-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .social-links-container li {
+    margin-left: 0.5em;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
