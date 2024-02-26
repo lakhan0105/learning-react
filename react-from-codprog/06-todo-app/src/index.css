@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #cecdcd;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.center {
+  width: 100%;
+  max-width: 600px;
+  /* background-color: salmon; */
+  margin: 0 auto;
+  padding: 0em 1em;
+}
+
+/* PAGE TITLE */
+.page-title {
+  text-transform: capitalize;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* FORM SECTION */
+.form-section {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.form-el {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  background-color: #fff;
+  padding: 0.3em 0.5em;
+  border-radius: 0.2em;
+}
+
+.task-input {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.2em 0.5em;
+  border: none;
+  outline: none;
+}
+
+.add-btn {
+  padding: 0em 1.5em;
+  border: none;
+  font-family: inherit;
+  border-radius: 0.2em;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* TASKS SECTION */
+.task {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+  padding: 0.3em;
+}
+
+.task-checkbox {
+  margin-right: 0.7em;
+}
+
+.task-name {
+  text-transform: capitalize;
+  font-size: 0.9rem;
+}
+
+.del-btn {
+  margin-left: auto;
+  font-size: 1.3rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
