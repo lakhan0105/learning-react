@@ -1,14 +1,19 @@
 import React from "react";
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import { useReducer } from "react";
+
+function reducer(newTask, action) {
+  if (action.type === "UPDATE_NEWTASK") {
+    return { ...newTask, taskName: action.payload.taskName, id: nanoid() };
+  }
+}
 
 function FormSection({ handleSubmit }) {
   const [userInput, setUserInput] = useState("");
-  const [newTaskObj, setNewTaskObj] = useState({
-    taskName: "",
-    taskStatus: false,
-    id: "",
-  });
+
+  const initialNewTask = { taskName: "", taskStatus: false, id: "" };
+  const [newTask, dispatch] = useReducer(reducer, initialNewTask);
 
   return (
     <section className="form-section center">
@@ -16,7 +21,7 @@ function FormSection({ handleSubmit }) {
         className="form-el"
         onSubmit={(e) => {
           e.preventDefault();
-          handleSubmit(newTaskObj);
+          handleSubmit(newTask);
           setUserInput("");
         }}
       >
@@ -26,8 +31,12 @@ function FormSection({ handleSubmit }) {
           value={userInput}
           onChange={(e) => {
             setUserInput(e.target.value);
-            setNewTaskObj((prev) => {
-              return { ...prev, taskName: e.target.value, id: nanoid() };
+            // setNewTaskObj((prev) => {
+            //   return { ...prev, taskName: e.target.value, id: nanoid() };
+            // });
+            dispatch({
+              type: "UPDATE_NEWTASK",
+              payload: { taskName: e.target.value },
             });
           }}
         />
