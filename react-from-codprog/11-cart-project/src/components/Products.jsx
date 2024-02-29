@@ -5,7 +5,7 @@ import { useCartContext } from "../context/CartProvider";
 
 function Products() {
   const value = useCartContext();
-  console.log(value);
+
 
   return (
     <div className="products-container">
