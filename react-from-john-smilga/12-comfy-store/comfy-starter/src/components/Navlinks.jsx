@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const links = [
@@ -11,10 +12,16 @@ const links = [
 ];
 
 function Navlinks() {
+  const { user } = useSelector((state) => state.userState);
+
   return (
     <>
       {links.map((link) => {
         const { id, text, url } = link;
+
+        // hide the checkout and orders if user is not logged in
+        if (!user && (url === "checkout" || url === "orders")) return null;
+
         return (
           <li key={id}>
             <NavLink to={url}>{text}</NavLink>

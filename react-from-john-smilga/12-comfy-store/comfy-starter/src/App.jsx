@@ -28,6 +28,10 @@ import { loader as singleProdLoader } from "./pages/SingleProduct";
 import { loader as productsLoader } from "./pages/Products";
 
 // actions
+import { action as registerAction } from "./pages/Register";
+import { action as loginAction } from "./pages/Login";
+
+import store from "./store";
 
 // create router
 const router = createBrowserRouter(
@@ -58,11 +62,19 @@ const router = createBrowserRouter(
         <Route path="/checkout" element={<Checkout />}></Route>
         <Route path="/orders" element={<Orders />}></Route>
       </Route>
-      <Route path="/login" element={<Login />} errorElement={<Error />}></Route>
+
+      <Route
+        path="/login"
+        element={<Login />}
+        errorElement={<Error />}
+        action={loginAction(store)}
+      ></Route>
+
       <Route
         path="/register"
         element={<Register />}
         errorElement={<Error />}
+        action={registerAction}
       ></Route>
     </>
   )

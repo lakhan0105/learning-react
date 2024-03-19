@@ -1,6 +1,29 @@
 import React from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, redirect } from "react-router-dom";
 import { FormInput, SubmitBtn } from "../components";
+import custFetch from "../utils";
+import { loginUser } from "../features/user/userSlice";
+
+export const action =
+  (store) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+
+    try {
+      const resp = await custFetch.post("/auth/local", data);
+      alert("logged in successfully");
+      store.dispatch(loginUser(resp.data));
+      return redirect("/");
+    } catch (error) {
+      const errMsg =
+        error?.response?.data?.error?.message ||
+        "please check your credentials";
+
+      alert(errMsg);
+      return null;
+    }
+  };
 
 function Login() {
   return (

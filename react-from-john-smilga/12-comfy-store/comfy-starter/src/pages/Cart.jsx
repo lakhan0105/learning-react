@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function Cart() {
   // temp
-  const user = null;
+  const { user } = useSelector((state) => state.userState);
   const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
 
   // if the cart is empty
