@@ -1,8 +1,9 @@
 import React from "react";
-import { Form, Link, redirect } from "react-router-dom";
+import { Form, Link, redirect, useNavigate } from "react-router-dom";
 import { FormInput, SubmitBtn } from "../components";
 import custFetch from "../utils";
 import { loginUser } from "../features/user/userSlice";
+import { useDispatch } from "react-redux";
 
 export const action =
   (store) =>
@@ -26,6 +27,24 @@ export const action =
   };
 
 function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const loginAsGuest = async () => {
+    try {
+      const resp = await custFetch.post("/auth/local", {
+        identifier: "test@test.com",
+        password: "secret",
+      });
+      dispatch(loginUser(resp.data));
+      alert("welcome guest user");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      alert("guest user login error please try again!");
+    }
+  };
+
   return (
     <section className="h-screen grid place-items-center">
       <Form
@@ -37,21 +56,25 @@ function Login() {
           type="email"
           name="identifier"
           label="email"
-          defaultValue="test@test.com"
+          // defaultValue="test@test.com"
         />
 
         <FormInput
           type="password"
           name="password"
           label="password"
-          defaultValue="secret"
+          // defaultValue="secret"
         />
 
         <div className="mt-4">
           <SubmitBtn text="login" />
         </div>
 
-        <button type="button" className="btn btn-secondary btn-block">
+        <button
+          type="button"
+          className="btn btn-secondary btn-block"
+          onClick={loginAsGuest}
+        >
           guest user
         </button>
         <p className="text-center">
