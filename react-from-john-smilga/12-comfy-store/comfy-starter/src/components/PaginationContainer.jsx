@@ -21,7 +21,6 @@ function PaginationContainer() {
   // if there is only page
   if (pageCount < 2) return null;
 
-  console.log(pages);
   return (
     <div className="mt-16 flex justify-end">
       <div className="join">
