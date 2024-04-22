@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Wrapper from "../assets/wrappers/RegisterPage";
 import { FormRow, Logo } from "../components/index";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, registerUser } from "../features/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   name: "",
@@ -11,6 +15,22 @@ const initialState = {
 
 function Register() {
   const [values, setValues] = useState(initialState);
+
+  const { isLoading, user } = useSelector((state) => {
+    return state.userState;
+  });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // logic to navigate when user logins
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        return navigate("/", { replace: true });
+      }, 1000);
+    }
+  }, [user]);
 
   // handleChange
   function handleChange(e) {
@@ -25,16 +45,25 @@ function Register() {
   // handleSubmit
   function handleSubmit(e) {
     e.preventDefault();
-
     const { name, email, password, isMember } = values;
 
+    // check for empty fields
     if (!email || !password || (!isMember && !name)) {
-      console.log("please fill out all the details");
+      toast.error("please fill out all the details");
       return;
     }
 
-    console.log("submitted");
-    console.log(values);
+    // login user
+    if (isMember) {
+      dispatch(loginUser({ email, password }));
+      return;
+    }
+
+    // register user
+    if (!isMember) {
+      dispatch(registerUser({ name, email, password }));
+      return;
+    }
   }
 
   // toggleMember
@@ -74,7 +103,9 @@ function Register() {
           handleChange={handleChange}
         />
 
-        <button className="btn btn-block">submit</button>
+        <button className="btn btn-block" disabled={isLoading}>
+          {isLoading ? "loading.." : "submit"}
+        </button>
 
         {/* toggle button */}
         <p>
