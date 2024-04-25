@@ -1,7 +1,14 @@
 import React from "react";
+import Wrapper from "../assets/wrappers/Navbar";
+import { JobsContainer, SearchContainer } from "../components/index";
 
 function AllJobs() {
-  return <div>AllJobs</div>;
+  return (
+    <>
+      <SearchContainer />
+      <JobsContainer />
+    </>
+  );
 }
 
 export default AllJobs;

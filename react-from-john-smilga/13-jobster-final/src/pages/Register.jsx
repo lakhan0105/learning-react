@@ -15,7 +15,6 @@ const initialState = {
 
 function Register() {
   const [values, setValues] = useState(initialState);
-
   const { isLoading, user } = useSelector((state) => {
     return state.userState;
   });
@@ -27,7 +26,7 @@ function Register() {
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        return navigate("/", { replace: true });
+        return navigate("/stats", { replace: true });
       }, 1000);
     }
   }, [user]);
@@ -103,8 +102,21 @@ function Register() {
           handleChange={handleChange}
         />
 
-        <button className="btn btn-block" disabled={isLoading}>
+        <button type="submit" className="btn btn-block" disabled={isLoading}>
           {isLoading ? "loading.." : "submit"}
+        </button>
+
+        <button
+          type="button"
+          className="btn btn-block btn-hipster"
+          disabled={isLoading}
+          onClick={() =>
+            dispatch(
+              loginUser({ email: "testUser@test.com", password: "secret" })
+            )
+          }
+        >
+          {isLoading ? "loading.." : "demo"}
         </button>
 
         {/* toggle button */}

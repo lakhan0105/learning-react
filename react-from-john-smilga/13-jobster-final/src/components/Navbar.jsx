@@ -17,7 +17,7 @@ function Navbar() {
 
   // handleLogoutUser
   function handleLogoutUser() {
-    dispatch(logoutUser());
+    dispatch(logoutUser("Logging out..."));
   }
 
   return (
